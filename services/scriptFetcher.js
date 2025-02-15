@@ -7,7 +7,7 @@ exports.scrapeIMSDBScript = async (movieTitle) => {
     const { data } = await axios.get(url);
     const $ = cheerio.load(data);
     let scriptContent = $("td.scrtext pre").text().trim();
-    scriptContent = scriptContent.replace(/\s+/g, " ");
+    scriptContent = scriptContent.replace(/\s+/g, " ").replace(/<[^>]+>/g, '').replace(/<[^>]+>/g, '').trim();
 
     // Store in MongoDB
     const movieScript = new MovieScript({ title: movieTitle, scriptContent });
