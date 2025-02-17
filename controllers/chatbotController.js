@@ -27,7 +27,7 @@ exports.chatWithCharacter = async (req, res) => {
                         { role: "system", content: `You are ${character}. Respond like this character using their speech style.` },
                         { role: "user", content: user_message }
                     ],
-                    max_tokens: 100
+                    max_tokens: 50
                 },
                 {
                     headers: { 'Authorization': `Bearer ${OPENAI_API_KEY}`, 'Content-Type': 'application/json' }
